@@ -2,27 +2,22 @@ package example;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import pages.GooglePage;
+import pages.SearchResultsPage;
 
-import static constants.Properties.BASE_URL;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 
 public class SimpleTest extends AbstractTest {
     @Test
     void simpleTest() {
-        WebDriver driver = new ChromeDriver();
+        open("https://duckduckgo.com");
+        new GooglePage().searchFor("selenide java");
 
-        driver.get(BASE_URL);
-        //Accept cookies
-        //driver.findElement(By.id("onetrust-accept-btn-handler")).click();
-
-        //Search testing jobs in Poland
-        driver.findElement(By.id("new_form_job_search-keyword")).sendKeys("testing");
-        driver.findElement(By.id("new_form_job_search-location")).click();
-
-        driver.findElement(By.name("Find")).click();
-        driver.quit();
-
-
+        SearchResultsPage results = new SearchResultsPage();
+        results.checkResultsSizeIsAtLeast(1);
+        results.checkResultHasTest(0, "Selenide: concise UI tests in Java");
     }
 }

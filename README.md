@@ -9,11 +9,11 @@ This is the template of the test automation framework written in Java used for t
 ### Technology stack
 - Java - Programming language
 - Apache Maven - Build and package management
-- Selenide
+- Selenide https://selenide.org/ - Web automation based on Selenium webdriver
 - JUnit 5 https://junit.org/junit5/ - Test execution and reporting
 
 ### Application Under Test (Web UI)
-web page
+Online demo web shop: https://www.saucedemo.com/
 
 ### Framework usage
 1. Install required software: Java, Git, Maven
