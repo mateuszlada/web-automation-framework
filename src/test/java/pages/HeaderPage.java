@@ -10,7 +10,7 @@ public class HeaderPage {
     private final SelenideElement cartItemsLabel = $(byClassName("shopping_cart_badge"));
 
     public int getNumberOfItemsInCart() {
-        return Integer.valueOf(cartItemsLabel.getText());
+        return Integer.parseInt(cartItemsLabel.getText());
     }
 
     public CartPage openCart() {
